@@ -7,26 +7,30 @@
   <meta name="description" content="Insights, product updates, and business finance knowledge from the Hiesabati AI team.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
     .page-hero-gradient { background: linear-gradient(135deg, var(--text-primary) 30%, var(--brand-blue-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline; }
-    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; }
     @media (max-width: 1024px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 640px) { .blog-grid { grid-template-columns: 1fr; } }
-    .blog-card { background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.04) 100%); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); text-decoration: none; color: inherit; }
-    [data-theme="light"] .blog-card { background: rgba(255,255,255,0.78); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 4px 16px rgba(0,0,0,0.02); }
-    .blog-card:hover { transform: translateY(-6px); border-color: rgba(59,130,246,0.25); box-shadow: 0 24px 48px rgba(0,0,0,0.35), 0 0 0 1px rgba(59,130,246,0.15); }
-    [data-theme="light"] .blog-card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.06), 0 0 0 1px rgba(59,130,246,0.1); }
-    .blog-thumb { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative; overflow: hidden; }
-    .blog-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
-    .blog-category { display: inline-flex; align-items: center; font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brand-blue-light); background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.18); border-radius: 99px; padding: 4px 12px; width: fit-content; }
-    .blog-title { font-size: 16.5px; font-weight: 700; line-height: 1.4; letter-spacing: -0.01em; margin: 0; }
-    .blog-excerpt { font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; margin: 0; flex: 1; }
-    .blog-meta { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--border-color); margin-top: auto; }
+    .blog-card { background: rgba(15, 14, 18, 0.6) !important; border: 1px solid rgba(197, 168, 128, 0.15) !important; border-radius: var(--radius-md) !important; overflow: hidden; display: flex; flex-direction: column; transition: var(--transition-elegant) !important; backdrop-filter: blur(24px) !important; -webkit-backdrop-filter: blur(24px) !important; text-decoration: none; color: inherit; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25) !important; }
+    [data-theme="light"] .blog-card { background: rgba(255, 255, 255, 0.75) !important; border: 1px solid rgba(154, 120, 82, 0.18) !important; box-shadow: 0 8px 32px rgba(154, 120, 82, 0.04) !important; }
+    .blog-card:hover { transform: translateY(-8px) !important; border-color: rgba(197, 168, 128, 0.45) !important; box-shadow: 0 24px 60px rgba(197, 168, 128, 0.12), inset 0 0 20px rgba(197, 168, 128, 0.05) !important; }
+    [data-theme="light"] .blog-card:hover { border-color: rgba(154, 120, 82, 0.4) !important; box-shadow: 0 24px 60px rgba(154, 120, 82, 0.12) !important; }
+    .blog-thumb { height: 190px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(197, 168, 128, 0.12); background: var(--bg-surface-2); }
+    .blog-thumb img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-elegant); filter: grayscale(0.2) contrast(1.05) brightness(0.85); }
+    .blog-card:hover .blog-thumb img { transform: scale(1.05); filter: grayscale(0) contrast(1.1) brightness(1); }
+    .blog-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 60%, rgba(8, 7, 10, 0.4) 100%); pointer-events: none; }
+    [data-theme="light"] .blog-thumb::after { background: linear-gradient(to bottom, transparent 60%, rgba(154, 120, 82, 0.1) 100%); }
+    .blog-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+    .blog-category { display: inline-flex; align-items: center; font-family: var(--font-mono); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--brand-blue); background: rgba(197, 168, 128, 0.08); border: 1px solid rgba(197, 168, 128, 0.25); border-radius: var(--radius-pill); padding: 4px 14px; width: fit-content; }
+    .blog-title { font-family: var(--font-display); font-size: 20px; font-weight: 400; line-height: 1.3; letter-spacing: -0.01em; margin: 0; color: var(--text-primary); }
+    .blog-excerpt { font-size: 13.5px; color: var(--text-secondary); line-height: 1.7; margin: 0; flex: 1; font-weight: 300; }
+    .blog-meta { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border-color); margin-top: auto; }
     .blog-author { display: flex; align-items: center; gap: 8px; }
-    .blog-avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: white; flex-shrink: 0; }
-    .blog-author-name { font-size: 12px; font-weight: 600; color: var(--text-secondary); }
+    .blog-avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #14110b; background: var(--brand-blue) !important; flex-shrink: 0; }
+    .blog-author-name { font-size: 12px; font-weight: 500; color: var(--text-secondary); }
     .blog-read-time { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); }
   </style>
 </head>
@@ -144,14 +148,14 @@
       <div class="blog-grid">
 
         <a href="#" class="blog-card">
-          <div class="blog-thumb" style="background: linear-gradient(135deg, #1e40af, #3b82f6);">🤖</div>
+          <div class="blog-thumb"><img src="assets/AI.png" alt="Traditional CFO Replacement"></div>
           <div class="blog-card-body">
             <span class="blog-category">Finance AI</span>
             <h2 class="blog-title">How AI is Replacing the Traditional CFO</h2>
             <p class="blog-excerpt">Autonomous agents now handle financial modeling, forecasting, and risk analysis — what does this mean for the future of leadership?</p>
             <div class="blog-meta">
               <div class="blog-author">
-                <div class="blog-avatar" style="background: #2563eb;">A</div>
+                <div class="blog-avatar">A</div>
                 <span class="blog-author-name">Aria Hassan</span>
               </div>
               <span class="blog-read-time">6 min read</span>
@@ -160,14 +164,14 @@
         </a>
 
         <a href="#" class="blog-card">
-          <div class="blog-thumb" style="background: linear-gradient(135deg, #065f46, #10b981);">🧾</div>
+          <div class="blog-thumb"><img src="assets/VAT_Dashboard.png" alt="VAT Compliance Automation"></div>
           <div class="blog-card-body">
             <span class="blog-category">Compliance</span>
             <h2 class="blog-title">VAT Compliance Automation for Global Businesses</h2>
             <p class="blog-excerpt">A deep-dive into how Hiesabati handles multi-country VAT, GCC corporate tax, and audit trail generation automatically.</p>
             <div class="blog-meta">
               <div class="blog-author">
-                <div class="blog-avatar" style="background: #059669;">T</div>
+                <div class="blog-avatar">T</div>
                 <span class="blog-author-name">Tax Desk</span>
               </div>
               <span class="blog-read-time">8 min read</span>
@@ -176,14 +180,14 @@
         </a>
 
         <a href="#" class="blog-card">
-          <div class="blog-thumb" style="background: linear-gradient(135deg, #581c87, #a855f7);">📊</div>
+          <div class="blog-thumb"><img src="assets/Reports.png" alt="Predictive Cash Flow Analytics"></div>
           <div class="blog-card-body">
             <span class="blog-category">Analytics</span>
             <h2 class="blog-title">Predictive Cash Flow: The Future of Business Planning</h2>
             <p class="blog-excerpt">Our AI model now forecasts 14+ months of cash runway with confidence intervals. Here's how it works under the hood.</p>
             <div class="blog-meta">
               <div class="blog-author">
-                <div class="blog-avatar" style="background: #7c3aed;">R</div>
+                <div class="blog-avatar">R</div>
                 <span class="blog-author-name">Rami Khalil</span>
               </div>
               <span class="blog-read-time">5 min read</span>
@@ -192,14 +196,14 @@
         </a>
 
         <a href="#" class="blog-card">
-          <div class="blog-thumb" style="background: linear-gradient(135deg, #7c2d12, #f97316);">📒</div>
+          <div class="blog-thumb"><img src="assets/JournalEntries.png" alt="Double-Entry Ledgers System"></div>
           <div class="blog-card-body">
             <span class="blog-category">Bookkeeping</span>
             <h2 class="blog-title">Double-Entry Ledgers in the Age of Machine Learning</h2>
             <p class="blog-excerpt">Why 500-year-old double-entry accounting is still the gold standard — and how AI makes it invisible to the user.</p>
             <div class="blog-meta">
               <div class="blog-author">
-                <div class="blog-avatar" style="background: #ea580c;">L</div>
+                <div class="blog-avatar">L</div>
                 <span class="blog-author-name">Layla Noor</span>
               </div>
               <span class="blog-read-time">7 min read</span>
@@ -208,14 +212,14 @@
         </a>
 
         <a href="#" class="blog-card">
-          <div class="blog-thumb" style="background: linear-gradient(135deg, #1e3a5f, #06b6d4);">🔐</div>
+          <div class="blog-thumb"><img src="assets/Intro.png" alt="Enterprise Security Systems"></div>
           <div class="blog-card-body">
             <span class="blog-category">Security</span>
             <h2 class="blog-title">Enterprise Security in Cloud Financial Platforms</h2>
             <p class="blog-excerpt">AES-256, TLS 1.3, per-tenant sandboxing, and immutable audit logs — how we keep your financial data safe.</p>
             <div class="blog-meta">
               <div class="blog-author">
-                <div class="blog-avatar" style="background: #0891b2;">S</div>
+                <div class="blog-avatar">S</div>
                 <span class="blog-author-name">Security Team</span>
               </div>
               <span class="blog-read-time">9 min read</span>
@@ -224,14 +228,14 @@
         </a>
 
         <a href="#" class="blog-card">
-          <div class="blog-thumb" style="background: linear-gradient(135deg, #14532d, #22c55e);">🚀</div>
+          <div class="blog-thumb"><img src="assets/Performance.png" alt="Startup scaling dashboards"></div>
           <div class="blog-card-body">
             <span class="blog-category">Growth</span>
             <h2 class="blog-title">Scaling from Startup to Enterprise with Hiesabati AI</h2>
             <p class="blog-excerpt">Real stories from customers who replaced spreadsheets with Hiesabati and grew revenue 3x while cutting accounting overhead.</p>
             <div class="blog-meta">
               <div class="blog-author">
-                <div class="blog-avatar" style="background: #16a34a;">K</div>
+                <div class="blog-avatar">K</div>
                 <span class="blog-author-name">Kareem Saleh</span>
               </div>
               <span class="blog-read-time">4 min read</span>

@@ -821,6 +821,32 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
 
       drawerMessages.appendChild(replyWrapper);
+
+      // ── Inline question chips re-rendered after every bot reply ──
+      const kbForChips = (typeof chatbotKnowledge !== 'undefined')
+        ? (chatbotKnowledge[targetLang] || chatbotKnowledge['en'])
+        : null;
+
+      if (kbForChips && kbForChips.suggestions && kbForChips.suggestions.length) {
+        const chipsRow = document.createElement('div');
+        chipsRow.className = 'inline-chips-row';
+
+        kbForChips.suggestions.forEach(suggestion => {
+          const chip = document.createElement('button');
+          chip.className = 'inline-chip';
+          chip.textContent = suggestion;
+          chip.addEventListener('click', () => {
+            if (drawerInput) {
+              drawerInput.value = suggestion;
+              handleDrawerChatSend();
+            }
+          });
+          chipsRow.appendChild(chip);
+        });
+
+        drawerMessages.appendChild(chipsRow);
+      }
+
       drawerMessages.scrollTop = drawerMessages.scrollHeight;
     }, 1000);
   }
