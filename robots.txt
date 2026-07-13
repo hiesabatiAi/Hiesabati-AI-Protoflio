@@ -1,0 +1,5 @@
+User-agent: *
+
+Allow: /
+
+Sitemap: https://hiesabatiai.github.io/Hiesabati-AI-Protoflio/sitemap.xml
